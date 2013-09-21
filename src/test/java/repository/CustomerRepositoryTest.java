@@ -1,15 +1,8 @@
 package repository;
 
-import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.*;
-import static org.junit.Assert.*;
-import static org.springframework.data.jpa.domain.Specifications.where;
-
 import domain.Apartment;
 import domain.Customer;
-import org.hamcrest.Matcher;
 import org.hamcrest.collection.IsIterableWithSize;
-import org.joda.time.LocalDate;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
@@ -23,6 +16,12 @@ import javax.persistence.criteria.Predicate;
 import javax.persistence.criteria.Root;
 import java.util.List;
 import java.util.Set;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.notNullValue;
+import static org.junit.Assert.*;
+import static org.springframework.data.jpa.domain.Specifications.where;
 
 /**
  * @author Oliver Gierke

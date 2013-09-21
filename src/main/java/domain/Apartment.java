@@ -1,23 +1,16 @@
 package domain;
 
-import javax.persistence.*;
-import java.util.Collection;
+import javax.persistence.Entity;
+import javax.persistence.Temporal;
+import javax.persistence.TemporalType;
 import java.util.Date;
-import java.util.List;
 
 @Entity
-public class Apartment {
-
-	@Id
-	@GeneratedValue(strategy = GenerationType.AUTO)
-	private Long id;
+public class Apartment extends BaseEntity{
 
 	@Temporal(TemporalType.DATE)
 	private Date expiryDate;
 
-	public Long getId() {
-		return id;
-	}
 	public Date getExpiryDate() {
 		return expiryDate;
 	}

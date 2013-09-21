@@ -1,15 +1,13 @@
 package domain;
 
-import javax.persistence.*;
-import java.util.List;
+import javax.persistence.Entity;
+import javax.persistence.JoinColumn;
+import javax.persistence.JoinTable;
+import javax.persistence.OneToMany;
 import java.util.Set;
 
 @Entity
-public class Customer {
-
-    @Id
-    @GeneratedValue(strategy = GenerationType.AUTO)
-    private Long id;
+public class Customer extends BaseEntity {
 
     @OneToMany
     @JoinTable(
@@ -20,6 +18,7 @@ public class Customer {
     private Set<Apartment> apartments;
 
     private String firstName;
+
     private String lastName;
 
     public Customer() {
@@ -28,10 +27,6 @@ public class Customer {
     public Customer(String firstName, String lastName) {
         this.firstName = firstName;
         this.lastName = lastName;
-    }
-
-    public Long getId() {
-        return id;
     }
 
     public String getFirstName() {
@@ -48,10 +43,6 @@ public class Customer {
 
     public void setLastName(String lastName) {
         this.lastName = lastName;
-    }
-
-    public void setId(Long id) {
-        this.id = id;
     }
 
     public Set<Apartment> getApartments() {
