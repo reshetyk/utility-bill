@@ -10,15 +10,9 @@ import java.util.Set;
 public class Customer extends BaseEntity {
 
     @OneToMany
-    @JoinTable(
-            name = "CustomerByApartment",
-            joinColumns = @JoinColumn(name = "customer_id"),
-            inverseJoinColumns = @JoinColumn(name = "apartment_id")
-    )
+    @JoinTable(name = "CustomerByApartment", joinColumns = @JoinColumn(name = "customer_id"), inverseJoinColumns = @JoinColumn(name = "apartment_id"))
     private Set<Apartment> apartments;
-
     private String firstName;
-
     private String lastName;
 
     public Customer() {
