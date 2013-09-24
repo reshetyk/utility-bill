@@ -16,6 +16,7 @@
         <jodatime.version>2.2</jodatime.version>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <spring.data.jpa.version>1.4.0.RC1</spring.data.jpa.version>
+        <querydsl.version>3.0.0</querydsl.version>
     </properties>
 
     <build>
@@ -29,10 +30,28 @@
                     <target>1.6</target>
                 </configuration>
             </plugin>
+            <!-- QUERY DSL -->
+            <plugin>
+                <groupId>com.mysema.maven</groupId>
+                <artifactId>apt-maven-plugin</artifactId>
+                <version>1.0.6</version>
+                <executions>
+                    <execution>
+                        <goals>
+                            <goal>process</goal>
+                        </goals>
+                        <configuration>
+                            <outputDirectory>target/generated-sources/java</outputDirectory>
+                            <processor>com.mysema.query.apt.jpa.JPAAnnotationProcessor</processor>
+                            <logOnlyOnError>true</logOnlyOnError>
+                        </configuration>
+                    </execution>
+                </executions>
+            </plugin>
         </plugins>
     </build>
 
-
+    <!-- SPRING FRAMEWORK -->
     <dependencies>
         <dependency>
             <groupId>org.springframework</groupId>
@@ -64,13 +83,32 @@
             <version>${spring.data.jpa.version}</version>
         </dependency>
 
+        <!-- QUERY DSL -->
+        <dependency>
+            <groupId>com.mysema.querydsl</groupId>
+            <artifactId>querydsl-jpa</artifactId>
+            <version>${querydsl.version}</version>
+        </dependency>
+        <dependency>
+            <groupId>com.mysema.querydsl</groupId>
+            <artifactId>querydsl-apt</artifactId>
+            <version>${querydsl.version}</version>
+            <scope>provided</scope>
+            <exclusions>
+                <exclusion>
+                    <groupId>org.eclipse.jdt.core.compiler</groupId>
+                    <artifactId>ecj</artifactId>
+                </exclusion>
+            </exclusions>
+        </dependency>
+
+        <!--TEST-->
         <dependency>
             <groupId>junit</groupId>
             <artifactId>junit</artifactId>
             <version>${junit.version}</version>
             <scope>test</scope>
         </dependency>
-
         <dependency>
             <groupId>log4j</groupId>
             <artifactId>log4j</artifactId>
@@ -90,6 +128,7 @@
             <scope>test</scope>
         </dependency>
 
+        <!-- HIBERNATE -->
         <dependency>
             <groupId>org.hibernate.javax.persistence</groupId>
             <artifactId>hibernate-jpa-2.0-api</artifactId>
@@ -101,6 +140,8 @@
             <version>${hibernate.version}</version>
             <scope>runtime</scope>
         </dependency>
+
+        <!-- LOGGING -->
         <dependency>
             <groupId>org.slf4j</groupId>
             <artifactId>slf4j-log4j12</artifactId>

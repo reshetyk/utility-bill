@@ -1,27 +1,23 @@
 package repository;
 
+import com.mysema.query.BooleanBuilder;
+import com.mysema.query.types.Predicate;
 import domain.Apartment;
 import domain.Customer;
+import domain.QCustomer;
 import org.hamcrest.collection.IsIterableWithSize;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.data.domain.Page;
 import org.springframework.data.domain.PageRequest;
-import org.springframework.data.jpa.domain.Specification;
 import org.springframework.test.context.ContextConfiguration;
 
-import javax.persistence.criteria.CriteriaBuilder;
-import javax.persistence.criteria.CriteriaQuery;
-import javax.persistence.criteria.Predicate;
-import javax.persistence.criteria.Root;
-import java.util.List;
 import java.util.Set;
 
 import static org.hamcrest.CoreMatchers.is;
-import static org.hamcrest.Matchers.hasItems;
+import static org.hamcrest.Matchers.equalTo;
 import static org.hamcrest.Matchers.notNullValue;
 import static org.junit.Assert.*;
-import static org.springframework.data.jpa.domain.Specifications.where;
 
 /**
  * @author Oliver Gierke
@@ -59,19 +55,28 @@ public class CustomerRepositoryTest extends BaseTest {
 		assertThat(customer.getLastName(), is("Beauford"));
 	}
 
+//	@Test
+//	public void findCustomersBySpecification() throws Exception {
+//
+//		Customer dave = customerRepository.findOne(1L);
+//		List<Customer> result = customerRepository.findAll(where(new Specification<Customer>() {
+//            @Override
+//            public Predicate toPredicate(Root<Customer> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
+//               return cb.equal(root.get("firstName"),"Dave");
+//            }
+//        }));
+//
+//		assertThat(result.size(), is(1));
+//		assertThat(result, hasItems(dave));
+//	}
 	@Test
-	public void findCustomersBySpecification() throws Exception {
+	public void findCustomersByQueryDsl() throws Exception {
+        BooleanBuilder booleanBuilder = new BooleanBuilder();
+        Predicate predicate = booleanBuilder.and(QCustomer.customer.firstName.eq("Dave"));
+		Customer customer = customerRepository.findOne(predicate);
 
-		Customer dave = customerRepository.findOne(1L);
-		List<Customer> result = customerRepository.findAll(where(new Specification<Customer>() {
-            @Override
-            public Predicate toPredicate(Root<Customer> root, CriteriaQuery<?> query, CriteriaBuilder cb) {
-               return cb.equal(root.get("firstName"),"Dave");
-            }
-        }));
-
-		assertThat(result.size(), is(1));
-		assertThat(result, hasItems(dave));
+        assertNotNull(customer);
+        assertThat("Dave", equalTo(customer.getFirstName()));
 	}
 
     @Test
