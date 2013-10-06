@@ -1,16 +1,13 @@
 package repository;
 
 import domain.Apartment;
-import domain.Customer;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
 
-import java.util.List;
-
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.CoreMatchers.notNullValue;
-import static org.junit.Assert.assertFalse;
+import static org.junit.Assert.assertNotNull;
 import static org.junit.Assert.assertThat;
 
 /**
@@ -27,9 +24,15 @@ public class ApartmentRepositoryTest extends BaseTest {
 
     @Test
     public void saveApartment() {
-
         Apartment apartment = apartmentRepository.save(new Apartment());
         assertThat(apartment.getId(), is(notNullValue()));
+    }
+
+    @Test
+    public void findOne () {
+        Apartment apartment = apartmentRepository.findOne(2L);
+        assertNotNull(apartment);
+        assertThat(apartment.getName(), is("home donetsk"));
     }
 
 }

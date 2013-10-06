@@ -10,5 +10,6 @@
     <import resource="infrastructure.xml" />
 
     <jpa:repositories base-package="repository" />
+    <context:component-scan base-package="service" />
 
 </beans>

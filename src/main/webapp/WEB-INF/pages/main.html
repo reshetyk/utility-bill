@@ -1,0 +1,19 @@
+<html xmlns="http://www.w3.org/1999/xhtml" xmlns:th="http://www.thymeleaf.org/">
+<body>
+
+<h2>All apartments</h2>
+
+<ul th:each="apartment : ${apartments}">
+    <li th:text="${apartment.name}"></li>
+</ul>
+
+<h2>Add new apartment</h2>
+<div>
+    <form th:object="${apartmentForm}" method="post" th:action="@{/addApartment}" action="#" th:method="'post'" >
+        <input type="text" th:field="*{name}" />
+        <button type="submit">Save</button>
+    </form>
+</div>
+
+</body>
+</html>
