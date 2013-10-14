@@ -13,7 +13,7 @@ import static org.junit.Assert.assertThat;
 /**
  * @author Oliver Gierke
  */
-@ContextConfiguration("classpath:application-context.xml")
+@ContextConfiguration("classpath:spring/application-context.xml")
 public class ApartmentRepositoryTest extends BaseTest {
 
     @Autowired

@@ -22,7 +22,7 @@ import static org.junit.Assert.*;
 /**
  * @author Oliver Gierke
  */
-@ContextConfiguration("classpath:application-context.xml")
+@ContextConfiguration("classpath:spring/application-context.xml")
 public class CustomerRepositoryTest extends BaseTest {
 
 	@Autowired
@@ -90,7 +90,7 @@ public class CustomerRepositoryTest extends BaseTest {
     }
 
     @Test
-    public void findApartmentsCustomer() {
+    public void findCustomerApartments() {
         Customer customer = customerRepository.findOne(1L);
         Set<Apartment> apartments = customer.getApartments();
 
