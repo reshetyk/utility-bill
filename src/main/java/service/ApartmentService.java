@@ -21,7 +21,7 @@ public class ApartmentService {
         return apartmentRepository.findAll();
     }
 
-    public void save (Apartment apartment) {
-        apartmentRepository.save(apartment);
+    public Apartment save (Apartment apartment) {
+        return apartmentRepository.save(apartment);
     }
 }

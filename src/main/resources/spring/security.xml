@@ -7,17 +7,18 @@
 
     <global-method-security secured-annotations="enabled" pre-post-annotations="enabled"/>
 
-    <http auto-config="true">
+    <http auto-config="true" use-expressions="true">
+<!--
         <intercept-url pattern="/**" access="ROLE_USER" />
         <intercept-url pattern="/admin/**" access="ROLE_ADMIN" />
+-->
+        <intercept-url pattern="/" access="isAuthenticated()" />
+        <intercept-url pattern="/**" access="isAuthenticated()" />
+        <form-login always-use-default-target="true" default-target-url="/" />
     </http>
 
     <authentication-manager>
-        <authentication-provider>
-            <user-service>
-                <user name="admin" password="adminpassword" authorities="ROLE_USER, ROLE_ADMIN" />
-                <user name="user" password="userpassword" authorities="ROLE_USER" />
-            </user-service>
+        <authentication-provider user-service-ref="customerService">
         </authentication-provider>
     </authentication-manager>
 
