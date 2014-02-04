@@ -10,16 +10,7 @@
         <Location left="711" top="26" />
         <Size width="198" height="145" />
         <Collapsed>False</Collapsed>
-        <Member type="Field">private RealEstateObject realEstateObject</Member>
         <Member type="Field">private Customer customer</Member>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
-        <Name>RealEstateObject</Name>
-        <Access>Public</Access>
-        <Location left="1085" top="26" />
-        <Size width="171" height="113" />
-        <Collapsed>False</Collapsed>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
@@ -75,10 +66,11 @@
         <Name>Service</Name>
         <Access>Public</Access>
         <Location left="302" top="211" />
-        <Size width="162" height="155" />
+        <Size width="209" height="155" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private String name</Member>
         <Member type="Field">private UsageTariff usageTariff</Member>
+        <Member type="Field">private ServiceGroup[] serviceGroups</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
@@ -92,32 +84,18 @@
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Enum">
-        <Name>Period</Name>
+        <Name>MinPeriod</Name>
         <Access>Public</Access>
         <Location left="63" top="771" />
         <Size width="162" height="112" />
         <Collapsed>False</Collapsed>
-        <Value>ByMonth</Value>
-        <Value>ByDay</Value>
-        <Value>ByYear</Value>
+        <Value>PerDay</Value>
+        <Value>PerMonth</Value>
+        <Value>PerYear</Value>
       </Entity>
     </Entities>
     <Relationships>
-      <Relationship type="Association" first="0" second="1">
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <BendPoint relativeToStartShape="True">
-          <X>934</X>
-          <Y>88</Y>
-        </BendPoint>
-        <BendPoint relativeToStartShape="False">
-          <X>1054</X>
-          <Y>48</Y>
-        </BendPoint>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Aggregation</AssociationType>
-      </Relationship>
-      <Relationship type="Generalization" first="3" second="2">
+      <Relationship type="Generalization" first="2" second="1">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="False">
@@ -125,15 +103,15 @@
           <Y>623</Y>
         </BendPoint>
       </Relationship>
-      <Relationship type="Association" first="0" second="6">
-        <Label>
-        </Label>
+      <Relationship type="Association" first="0" second="5">
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Aggregation</AssociationType>
       </Relationship>
-      <Relationship type="Association" first="7" second="2">
+      <Relationship type="Association" first="6" second="1">
+        <Label>
+        </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="False">
@@ -143,21 +121,17 @@
         <Direction>Unidirectional</Direction>
         <AssociationType>Aggregation</AssociationType>
       </Relationship>
-      <Relationship type="Generalization" first="8" second="2">
+      <Relationship type="Generalization" first="7" second="1">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
       </Relationship>
-      <Relationship type="Association" first="5" second="0">
-        <Label>
-        </Label>
+      <Relationship type="Association" first="4" second="0">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Aggregation</AssociationType>
       </Relationship>
-      <Relationship type="Association" first="4" second="7">
-        <Label>
-        </Label>
+      <Relationship type="Association" first="3" second="6">
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -167,17 +141,13 @@
         <Direction>Unidirectional</Direction>
         <AssociationType>Aggregation</AssociationType>
       </Relationship>
-      <Relationship type="Association" first="5" second="4">
-        <Label>
-        </Label>
+      <Relationship type="Association" first="4" second="3">
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
         <AssociationType>Aggregation</AssociationType>
       </Relationship>
-      <Relationship type="Dependency" first="4" second="2">
-        <Label>
-        </Label>
+      <Relationship type="Dependency" first="3" second="1">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="False">
@@ -185,13 +155,19 @@
           <Y>576</Y>
         </BendPoint>
       </Relationship>
-      <Relationship type="Association" first="3" second="9">
+      <Relationship type="Association" first="2" second="8">
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Association" first="0" second="5">
         <Label>
         </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
-        <AssociationType>Aggregation</AssociationType>
+        <AssociationType>Composition</AssociationType>
       </Relationship>
     </Relationships>
   </ProjectItem>
