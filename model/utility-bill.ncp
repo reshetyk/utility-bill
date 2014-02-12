@@ -5,18 +5,9 @@
     <Language>Java</Language>
     <Entities>
       <Entity type="Class">
-        <Name>Account</Name>
+        <Name>Tariff</Name>
         <Access>Public</Access>
-        <Location left="711" top="26" />
-        <Size width="198" height="145" />
-        <Collapsed>False</Collapsed>
-        <Member type="Field">private Customer customer</Member>
-        <Modifier>None</Modifier>
-      </Entity>
-      <Entity type="Class">
-        <Name>UsageTariff</Name>
-        <Access>Public</Access>
-        <Location left="364" top="465" />
+        <Location left="365" top="466" />
         <Size width="220" height="128" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private Double fee</Member>
@@ -47,7 +38,7 @@
       <Entity type="Class">
         <Name>Invoice</Name>
         <Access>Public</Access>
-        <Location left="864" top="250" />
+        <Location left="852" top="248" />
         <Size width="184" height="121" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private Account account</Member>
@@ -55,28 +46,31 @@
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
-        <Name>Customer</Name>
+        <Name>Account</Name>
         <Access>Public</Access>
-        <Location left="364" top="26" />
-        <Size width="162" height="98" />
+        <Location left="878" top="70" />
+        <Size width="162" height="128" />
         <Collapsed>False</Collapsed>
+        <Member type="Field">private String login</Member>
+        <Member type="Field">private String password</Member>
+        <Member type="Field">private String FIO</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
-        <Name>Service</Name>
+        <Name>Expense</Name>
         <Access>Public</Access>
-        <Location left="302" top="211" />
+        <Location left="302" top="212" />
         <Size width="209" height="155" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private String name</Member>
-        <Member type="Field">private UsageTariff usageTariff</Member>
+        <Member type="Field">private Tariff tariff</Member>
         <Member type="Field">private ServiceGroup[] serviceGroups</Member>
         <Modifier>None</Modifier>
       </Entity>
       <Entity type="Class">
         <Name>MeterTariff</Name>
         <Access>Public</Access>
-        <Location left="547" top="738" />
+        <Location left="549" top="738" />
         <Size width="162" height="111" />
         <Collapsed>False</Collapsed>
         <Member type="Field">private static Double startMeterValue</Member>
@@ -86,52 +80,52 @@
       <Entity type="Enum">
         <Name>MinPeriod</Name>
         <Access>Public</Access>
-        <Location left="63" top="771" />
+        <Location left="86" top="771" />
         <Size width="162" height="112" />
         <Collapsed>False</Collapsed>
         <Value>PerDay</Value>
         <Value>PerMonth</Value>
         <Value>PerYear</Value>
       </Entity>
+      <Entity type="Class">
+        <Name>AppartmentExpense</Name>
+        <Access>Public</Access>
+        <Location left="86" top="430" />
+        <Size width="162" height="145" />
+        <Collapsed>False</Collapsed>
+        <Member type="Field">private String address</Member>
+        <Member type="Field">private int countRegisteredPeople</Member>
+        <Member type="Field">private int countRooms</Member>
+        <Member type="Field">private Double size</Member>
+        <Modifier>None</Modifier>
+      </Entity>
     </Entities>
     <Relationships>
-      <Relationship type="Generalization" first="2" second="1">
+      <Relationship type="Generalization" first="1" second="0">
         <StartOrientation>Vertical</StartOrientation>
         <EndOrientation>Vertical</EndOrientation>
         <BendPoint relativeToStartShape="False">
-          <X>381</X>
-          <Y>623</Y>
+          <X>382</X>
+          <Y>624</Y>
         </BendPoint>
       </Relationship>
-      <Relationship type="Association" first="0" second="5">
+      <Relationship type="Association" first="5" second="0">
         <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>282</X>
+          <Y>444</Y>
+        </BendPoint>
         <Direction>Unidirectional</Direction>
         <AssociationType>Aggregation</AssociationType>
       </Relationship>
-      <Relationship type="Association" first="6" second="1">
+      <Relationship type="Generalization" first="6" second="0">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="2" second="5">
         <Label>
         </Label>
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-        <BendPoint relativeToStartShape="False">
-          <X>281</X>
-          <Y>443</Y>
-        </BendPoint>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Aggregation</AssociationType>
-      </Relationship>
-      <Relationship type="Generalization" first="7" second="1">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-      </Relationship>
-      <Relationship type="Association" first="4" second="0">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Vertical</EndOrientation>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Aggregation</AssociationType>
-      </Relationship>
-      <Relationship type="Association" first="3" second="6">
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <BendPoint relativeToStartShape="True">
@@ -141,33 +135,43 @@
         <Direction>Unidirectional</Direction>
         <AssociationType>Aggregation</AssociationType>
       </Relationship>
-      <Relationship type="Association" first="4" second="3">
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Aggregation</AssociationType>
-      </Relationship>
-      <Relationship type="Dependency" first="3" second="1">
-        <StartOrientation>Vertical</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <BendPoint relativeToStartShape="False">
-          <X>623</X>
-          <Y>576</Y>
-        </BendPoint>
-      </Relationship>
-      <Relationship type="Association" first="2" second="8">
-        <StartOrientation>Horizontal</StartOrientation>
-        <EndOrientation>Horizontal</EndOrientation>
-        <Direction>Unidirectional</Direction>
-        <AssociationType>Aggregation</AssociationType>
-      </Relationship>
-      <Relationship type="Association" first="0" second="5">
+      <Relationship type="Association" first="3" second="2">
         <Label>
         </Label>
         <StartOrientation>Horizontal</StartOrientation>
         <EndOrientation>Horizontal</EndOrientation>
         <Direction>Unidirectional</Direction>
-        <AssociationType>Composition</AssociationType>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Dependency" first="2" second="0">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <BendPoint relativeToStartShape="False">
+          <X>624</X>
+          <Y>577</Y>
+        </BendPoint>
+      </Relationship>
+      <Relationship type="Association" first="1" second="7">
+        <Label>
+        </Label>
+        <StartOrientation>Horizontal</StartOrientation>
+        <EndOrientation>Horizontal</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
+      </Relationship>
+      <Relationship type="Generalization" first="8" second="5">
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+      </Relationship>
+      <Relationship type="Association" first="3" second="4">
+        <Label>
+        </Label>
+        <StartOrientation>Vertical</StartOrientation>
+        <EndOrientation>Vertical</EndOrientation>
+        <Direction>Unidirectional</Direction>
+        <AssociationType>Aggregation</AssociationType>
       </Relationship>
     </Relationships>
   </ProjectItem>
