@@ -1,7 +1,5 @@
 package repository;
 
-import com.mysema.query.BooleanBuilder;
-import com.mysema.query.types.Predicate;
 import domain.Apartment;
 import domain.Customer;
 import domain.QCustomer;
@@ -43,7 +41,7 @@ public class CustomerRepositoryTest extends BaseTest {
 		Page<Customer> customers = customerRepository.findByLastName("Matthews", new PageRequest(0, 2));
 
 		assertThat(customers.getContent().size(), is(1));
-		assertFalse(customers.hasPreviousPage());
+		assertFalse(customers.hasPrevious());
 	}
 
 	@Test
@@ -71,9 +69,9 @@ public class CustomerRepositoryTest extends BaseTest {
 //	}
 	@Test
 	public void findCustomersByQueryDsl() throws Exception {
-        BooleanBuilder booleanBuilder = new BooleanBuilder();
-        Predicate predicate = booleanBuilder.and(QCustomer.customer.firstName.eq("Dave"));
-		Customer customer = customerRepository.findOne(predicate);
+//        BooleanBuilder booleanBuilder = new BooleanBuilder();
+//        Predicate predicate = booleanBuilder.and(QCustomer.customer.firstName.eq("Dave"));
+		Customer customer = customerRepository.findOne(QCustomer.customer.firstName.eq("Dave"));
 
         assertNotNull(customer);
         assertThat("Dave", equalTo(customer.getFirstName()));

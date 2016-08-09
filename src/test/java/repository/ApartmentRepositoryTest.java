@@ -1,6 +1,7 @@
 package repository;
 
 import domain.Apartment;
+import domain.QApartment;
 import org.junit.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.test.context.ContextConfiguration;
@@ -31,6 +32,14 @@ public class ApartmentRepositoryTest extends BaseTest {
     @Test
     public void findOne () {
         Apartment apartment = apartmentRepository.findOne(2L);
+        assertNotNull(apartment);
+        assertThat(apartment.getName(), is("home donetsk"));
+    }
+
+    @Test
+    public void findBySearchCriteria () {
+        Iterable<Apartment> donetsk = apartmentRepository.findAll(QApartment.apartment.name.like("%donetsk%"));
+        Apartment apartment = donetsk.iterator().next();
         assertNotNull(apartment);
         assertThat(apartment.getName(), is("home donetsk"));
     }

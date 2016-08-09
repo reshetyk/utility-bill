@@ -1,12 +1,10 @@
 package repository;
 
-import java.util.List;
-
 import domain.Apartment;
-import domain.Customer;
+import org.springframework.data.querydsl.QueryDslPredicateExecutor;
 import org.springframework.data.repository.CrudRepository;
 
-public interface ApartmentRepository extends CrudRepository<Apartment, Long> {
+public interface ApartmentRepository extends CrudRepository<Apartment, Long>, QueryDslPredicateExecutor<Apartment> {
 
 //	List<Apartment> findByCustomer(Customer customer);
 }
